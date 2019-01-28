@@ -25,29 +25,29 @@ public class MainActivity extends AppCompatActivity implements OnSelectDateListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button openCalendarButton = (Button) findViewById(R.id.openCalendarButton);
+        Button openCalendarButton = findViewById(R.id.openCalendarButton);
 
         openCalendarButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
         });
 
-        Button openOneDayPicker = (Button) findViewById(R.id.openOneDayPickerButton);
+        Button openOneDayPicker = findViewById(R.id.openOneDayPickerButton);
         openOneDayPicker.setOnClickListener(v -> startActivity(new Intent(this, OneDayPickerActivity.class)));
 
-        Button openManyDaysPicker = (Button) findViewById(R.id.openManyDayPickerButton);
+        Button openManyDaysPicker = findViewById(R.id.openManyDayPickerButton);
         openManyDaysPicker.setOnClickListener(v -> startActivity(new Intent(this, ManyDaysPickerActivity.class)));
 
-        Button openRangePicker = (Button) findViewById(R.id.openRangePickerButton);
+        Button openRangePicker = findViewById(R.id.openRangePickerButton);
         openRangePicker.setOnClickListener(v -> startActivity(new Intent(this, RangePickerActivity.class)));
 
-        Button openOneDayPickerDialog = (Button) findViewById(R.id.openOneDayPickerDialogButton);
+        Button openOneDayPickerDialog = findViewById(R.id.openOneDayPickerDialogButton);
         openOneDayPickerDialog.setOnClickListener(v -> openOneDayPicker());
 
-        Button openManyDaysPickerDialog = (Button) findViewById(R.id.openManyDaysPickerDialogButton);
+        Button openManyDaysPickerDialog = findViewById(R.id.openManyDaysPickerDialogButton);
         openManyDaysPickerDialog.setOnClickListener(v -> openManyDaysPicker());
 
-        Button openRangePickerDialog = (Button) findViewById(R.id.openRangePickerDialogButton);
+        Button openRangePickerDialog = findViewById(R.id.openRangePickerDialogButton);
         openRangePickerDialog.setOnClickListener(v -> openRangePicker());
     }
 

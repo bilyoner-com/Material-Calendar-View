@@ -19,9 +19,9 @@ public class RangePickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.range_picker_activity);
 
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
 
-        Button getDateButton = (Button) findViewById(R.id.getDateButton);
+        Button getDateButton = findViewById(R.id.getDateButton);
         getDateButton.setOnClickListener(v -> {
             for (Calendar calendar : calendarView.getSelectedDates()) {
                 System.out.println(calendar.getTime().toString());

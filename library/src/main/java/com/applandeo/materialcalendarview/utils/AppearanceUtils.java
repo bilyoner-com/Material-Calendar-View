@@ -21,13 +21,13 @@ public final class AppearanceUtils {
 
     public static void setAbbreviationsLabels(View view, int color, int firstDayOfWeek) {
         List<TextView> labels = new ArrayList<>();
-        labels.add((TextView) view.findViewById(R.id.mondayLabel));
-        labels.add((TextView) view.findViewById(R.id.tuesdayLabel));
-        labels.add((TextView) view.findViewById(R.id.wednesdayLabel));
-        labels.add((TextView) view.findViewById(R.id.thursdayLabel));
-        labels.add((TextView) view.findViewById(R.id.fridayLabel));
-        labels.add((TextView) view.findViewById(R.id.saturdayLabel));
-        labels.add((TextView) view.findViewById(R.id.sundayLabel));
+        labels.add(view.findViewById(R.id.mondayLabel));
+        labels.add(view.findViewById(R.id.tuesdayLabel));
+        labels.add(view.findViewById(R.id.wednesdayLabel));
+        labels.add(view.findViewById(R.id.thursdayLabel));
+        labels.add(view.findViewById(R.id.fridayLabel));
+        labels.add(view.findViewById(R.id.saturdayLabel));
+        labels.add(view.findViewById(R.id.sundayLabel));
 
         String[] abbreviations = view.getContext().getResources().getStringArray(R.array.material_calendar_day_abbreviations_array);
         for (int i = 0; i < 7; i++) {
@@ -45,7 +45,7 @@ public final class AppearanceUtils {
             return;
         }
 
-        ConstraintLayout calendarHeader = (ConstraintLayout) view.findViewById(R.id.calendarHeader);
+        ConstraintLayout calendarHeader = view.findViewById(R.id.calendarHeader);
         calendarHeader.setBackgroundColor(color);
     }
 
@@ -90,7 +90,7 @@ public final class AppearanceUtils {
     }
 
     public static void setHeaderVisibility(View view, int visibility) {
-        ConstraintLayout calendarHeader = (ConstraintLayout) view.findViewById(R.id.calendarHeader);
+        ConstraintLayout calendarHeader = view.findViewById(R.id.calendarHeader);
         calendarHeader.setVisibility(visibility);
     }
 }

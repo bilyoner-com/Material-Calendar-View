@@ -40,9 +40,9 @@ public class DatePicker {
             view.setBackgroundColor(mCalendarProperties.getPagesColor());
         }
 
-        mCancelButton = (AppCompatButton) view.findViewById(R.id.negative_button);
-        mOkButton = (AppCompatButton) view.findViewById(R.id.positive_button);
-        mTodayButton = (AppCompatButton) view.findViewById(R.id.today_button);
+        mCancelButton = view.findViewById(R.id.negative_button);
+        mOkButton = view.findViewById(R.id.positive_button);
+        mTodayButton = view.findViewById(R.id.today_button);
 
         setTodayButtonVisibility();
         setDialogButtonsColors();
@@ -51,7 +51,7 @@ public class DatePicker {
 
         CalendarView calendarView = new CalendarView(mContext, mCalendarProperties);
 
-        FrameLayout calendarContainer = (FrameLayout) view.findViewById(R.id.calendarContainer);
+        FrameLayout calendarContainer = view.findViewById(R.id.calendarContainer);
         calendarContainer.addView(calendarView);
 
         Optional.ofNullable(mCalendarProperties.getCalendar()).ifPresent(calendar -> {

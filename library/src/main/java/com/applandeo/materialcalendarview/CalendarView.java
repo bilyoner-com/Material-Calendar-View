@@ -229,15 +229,15 @@ public class CalendarView extends LinearLayout {
     }
 
     private void initUiElements() {
-        ImageButton forwardButton = (ImageButton) findViewById(R.id.forwardButton);
+        ImageButton forwardButton = findViewById(R.id.forwardButton);
         forwardButton.setOnClickListener(onNextClickListener);
 
-        ImageButton previousButton = (ImageButton) findViewById(R.id.previousButton);
+        ImageButton previousButton = findViewById(R.id.previousButton);
         previousButton.setOnClickListener(onPreviousClickListener);
 
-        mCurrentMonthLabel = (TextView) findViewById(R.id.currentDateLabel);
+        mCurrentMonthLabel = findViewById(R.id.currentDateLabel);
 
-        mViewPager = (CalendarViewPager) findViewById(R.id.calendarViewPager);
+        mViewPager = findViewById(R.id.calendarViewPager);
     }
 
     private void initCalendar() {
