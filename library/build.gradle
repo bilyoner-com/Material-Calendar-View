@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 ext {
     PUBLISH_GROUP_ID = 'com.applandeo'
@@ -39,5 +40,3 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
     implementation 'com.annimon:stream:1.2.1'
 }
-
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
