@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements OnSelectDateListe
         DatePickerBuilder oneDayBuilder = new DatePickerBuilder(this, this)
                 .pickerType(CalendarView.ONE_DAY_PICKER)
                 .date(max)
-                .headerColor(R.color.colorPrimaryDark)
-                .headerLabelColor(R.color.currentMonthDayColor)
-                .selectionColor(R.color.daysLabelColor)
-                .todayLabelColor(R.color.colorAccent)
-                .dialogButtonsColor(android.R.color.holo_green_dark)
-                .disabledDaysLabelsColor(android.R.color.holo_purple)
+                .headerBackgroundColor(R.color.colorPrimaryDark)
+                .monthNameTextAppearance(R.style.SampleLabelTextStyle_MonthName)
+                .selectedDayTextAppearance(R.style.SampleLabelTextStyle_SelectedDay)
+                .todayTextAppearance(R.style.SampleLabelTextStyle_Today)
+                .dialogButtonsTextAppearance(R.style.LabelTextStyle_DialogButton)
+                .disabledDayTextAppearance(R.style.SampleLabelTextStyle_DisabledDay)
                 .previousButtonSrc(R.drawable.ic_chevron_left_black_24dp)
                 .forwardButtonSrc(R.drawable.ic_chevron_right_black_24dp)
                 .minimumDate(min)
@@ -90,12 +90,12 @@ public class MainActivity extends AppCompatActivity implements OnSelectDateListe
 
         DatePickerBuilder manyDaysBuilder = new DatePickerBuilder(this, this)
                 .pickerType(CalendarView.MANY_DAYS_PICKER)
-                .headerColor(android.R.color.holo_green_dark)
-                .selectionColor(android.R.color.holo_green_dark)
-                .todayLabelColor(android.R.color.holo_green_dark)
-                .dialogButtonsColor(android.R.color.holo_green_dark)
+                .headerBackgroundColor(android.R.color.holo_green_dark)
                 .selectedDays(selectedDays)
-                .disabledDays(getDisabledDays());
+                .disabledDays(getDisabledDays())
+                .selectedDayTextAppearance(R.style.SampleLabelTextStyle_SelectedDay)
+                .todayTextAppearance(R.style.SampleLabelTextStyle_Today)
+                .dialogButtonsTextAppearance(R.style.LabelTextStyle_DialogButton);
 
         DatePicker manyDaysPicker = manyDaysBuilder.build();
         manyDaysPicker.show();
@@ -115,16 +115,16 @@ public class MainActivity extends AppCompatActivity implements OnSelectDateListe
 
         DatePickerBuilder rangeBuilder = new DatePickerBuilder(this, this)
                 .pickerType(CalendarView.RANGE_PICKER)
-                .headerColor(R.color.sampleDark)
-                .abbreviationsBarColor(R.color.sampleLight)
-                .abbreviationsLabelsColor(android.R.color.white)
-                .pagesColor(R.color.sampleLighter)
-                .selectionColor(android.R.color.white)
-                .selectionLabelColor(R.color.sampleDark)
-                .todayLabelColor(R.color.dialogAccent)
-                .dialogButtonsColor(android.R.color.white)
-                .daysLabelsColor(android.R.color.white)
-                .anotherMonthsDaysLabelsColor(R.color.sampleLighter)
+                .headerBackgroundColor(R.color.sampleDark)
+                .dayNamesBarColor(R.color.sampleLight)
+                .dayNamesBarColor(android.R.color.white)
+                .pagesColor(R.color.pageColor)
+                .selectedDayTextAppearance(R.style.SampleLabelTextStyle_SelectedDay)
+                .selectedDayBackgroundSrc(R.drawable.day_selected_background)
+                .todayTextAppearance(R.style.SampleLabelTextStyle_Today)
+                .dialogButtonsTextAppearance(R.style.LabelTextStyle_DialogButton)
+                .dayNameTextAppearance(R.style.SampleLabelTextStyle_DayAbbreviation)
+                .anotherMonthDayTextAppearance(R.style.SampleLabelTextStyle_AnotherMonthDay)
                 .selectedDays(selectedDays)
                 .disabledDays(getDisabledDays());
 
