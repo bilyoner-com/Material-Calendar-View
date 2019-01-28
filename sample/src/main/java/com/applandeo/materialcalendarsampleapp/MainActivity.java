@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.annimon.stream.Stream;
-import com.applandeo.materialcalendarview.CalendarUtils;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.DatePicker;
 import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
+import com.applandeo.materialcalendarview.utils.CalendarUtils;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 
 import java.util.ArrayList;

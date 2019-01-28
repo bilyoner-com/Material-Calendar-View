@@ -12,8 +12,10 @@ import java.util.Calendar;
  * <p>
  * Created by Mateusz Kornakiewicz on 24.05.2017.
  */
-
 public class DayColorsUtils {
+
+    private DayColorsUtils() {
+    }
 
     /**
      * This is general method which sets a color of the text, font type and a background of a TextView object.

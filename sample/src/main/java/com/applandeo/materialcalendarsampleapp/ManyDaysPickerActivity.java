@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.model.EventDay;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Created by Mateusz Kornakiewicz on 23.10.2017.
  */
-
 public class ManyDaysPickerActivity extends AppCompatActivity {
 
     @Override

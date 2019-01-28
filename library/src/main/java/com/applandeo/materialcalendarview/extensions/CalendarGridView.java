@@ -7,7 +7,6 @@ import android.widget.GridView;
 /**
  * Created by Mateusz Kornakiewicz on 15.11.2017.
  */
-
 public class CalendarGridView extends GridView {
 
     public CalendarGridView(Context context, AttributeSet attrs) {

@@ -3,7 +3,6 @@ package com.applandeo.materialcalendarview.exceptions;
 /**
  * Created by Mateusz Kornakiewicz on 09.08.2018.
  */
-
 public final class ErrorsMessages {
 
     public final static String ONE_DAY_PICKER_MULTIPLE_SELECTION = "ONE_DAY_PICKER DOES NOT SUPPORT MULTIPLE DAYS, USE setDate() METHOD INSTEAD";

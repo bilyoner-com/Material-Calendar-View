@@ -12,8 +12,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Mateusz Kornakiewicz on 23.05.2017.
  */
-
 public class DateUtils {
+
+    private DateUtils() {
+    }
 
     /**
      * @return An instance of the Calendar object with hour set to 00:00:00:00
@@ -109,7 +111,6 @@ public class DateUtils {
         int years = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
         return years * 12 + endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
     }
-
 
     /**
      * This method is used to count a number of days between two dates

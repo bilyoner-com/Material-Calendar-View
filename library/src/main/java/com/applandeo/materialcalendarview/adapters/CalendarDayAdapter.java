@@ -13,11 +13,11 @@ import android.widget.TextView;
 import com.annimon.stream.Stream;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.R;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 import com.applandeo.materialcalendarview.utils.DayColorsUtils;
 import com.applandeo.materialcalendarview.utils.ImageUtils;
-import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
  * <p>
  * Created by Mateusz Kornakiewicz on 24.05.2017.
  */
-
 class CalendarDayAdapter extends ArrayAdapter<Date> {
     private CalendarPageAdapter mCalendarPageAdapter;
     private LayoutInflater mLayoutInflater;

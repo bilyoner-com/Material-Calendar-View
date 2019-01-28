@@ -5,15 +5,15 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
-import com.applandeo.materialcalendarview.CalendarUtils;
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.R;
 import com.applandeo.materialcalendarview.adapters.CalendarPageAdapter;
+import com.applandeo.materialcalendarview.model.EventDay;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
+import com.applandeo.materialcalendarview.utils.CalendarUtils;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 import com.applandeo.materialcalendarview.utils.DayColorsUtils;
-import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -25,7 +25,6 @@ import java.util.List;
  * <p>
  * Created by Mateusz Kornakiewicz on 24.05.2017.
  */
-
 public class DayRowClickListener implements AdapterView.OnItemClickListener {
 
     private CalendarPageAdapter mCalendarPageAdapter;

@@ -9,8 +9,10 @@ import android.widget.ImageView;
  * <p>
  * Created by Mateusz Kornakiewicz on 23.05.2017.
  */
-
 public class ImageUtils {
+
+    private ImageUtils() {
+    }
 
     public static void loadImage(ImageView imageView, Object image) {
         if (image == null) {
@@ -29,8 +31,5 @@ public class ImageUtils {
         }
 
         imageView.setImageDrawable(drawable);
-    }
-
-    private ImageUtils() {
     }
 }

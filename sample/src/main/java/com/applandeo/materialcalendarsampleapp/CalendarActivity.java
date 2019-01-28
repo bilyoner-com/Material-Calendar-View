@@ -7,8 +7,8 @@ import android.widget.Toast;
 
 import com.applandeo.materialcalendarsampleapp.utils.DrawableUtils;
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
+import com.applandeo.materialcalendarview.model.EventDay;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ import java.util.Random;
 /**
  * Created by Mateusz Kornakiewicz on 26.05.2017.
  */
-
 public class CalendarActivity extends AppCompatActivity {
 
     @Override

@@ -18,8 +18,8 @@ import com.applandeo.materialcalendarview.utils.DateUtils;
  * <p>
  * Created by Mateusz Kornakiewicz on 27.07.2017.
  */
-
 public class DatePicker {
+
     private final Context mContext;
     private CalendarProperties mCalendarProperties;
 
@@ -36,7 +36,7 @@ public class DatePicker {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         final View view = layoutInflater.inflate(R.layout.date_picker_dialog, null);
 
-        if(mCalendarProperties.getPagesColor() != 0){
+        if (mCalendarProperties.getPagesColor() != 0) {
             view.setBackgroundColor(mCalendarProperties.getPagesColor());
         }
 

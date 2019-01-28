@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 
 import com.annimon.stream.Stream;
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.R;
 import com.applandeo.materialcalendarview.exceptions.ErrorsMessages;
 import com.applandeo.materialcalendarview.exceptions.UnsupportedMethodsException;
@@ -14,6 +13,8 @@ import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
 import com.applandeo.materialcalendarview.listeners.OnSelectionAbilityListener;
+import com.applandeo.materialcalendarview.model.EventDay;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,7 +25,6 @@ import java.util.List;
  * <p>
  * Created by Mateusz Kornakiewicz on 30.10.2017.
  */
-
 public class CalendarProperties {
 
     /**
@@ -266,7 +266,7 @@ public class CalendarProperties {
             throw new UnsupportedMethodsException(ErrorsMessages.ONE_DAY_PICKER_MULTIPLE_SELECTION);
         }
 
-        if(mCalendarType == CalendarView.RANGE_PICKER && !DateUtils.isFullDatesRange(selectedDays)){
+        if (mCalendarType == CalendarView.RANGE_PICKER && !DateUtils.isFullDatesRange(selectedDays)) {
             throw new UnsupportedMethodsException(ErrorsMessages.RANGE_PICKER_NOT_RANGE);
         }
 

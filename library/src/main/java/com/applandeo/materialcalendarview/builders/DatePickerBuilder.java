@@ -18,6 +18,7 @@ import java.util.List;
  * Created by Mateusz Kornakiewicz on 12.10.2017.
  */
 public class DatePickerBuilder {
+
     private Context mContext;
     private CalendarProperties mCalendarProperties;
 

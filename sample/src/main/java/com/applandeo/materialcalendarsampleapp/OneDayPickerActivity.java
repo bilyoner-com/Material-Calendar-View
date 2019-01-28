@@ -12,7 +12,6 @@ import java.util.Calendar;
 /**
  * Created by Mateusz Kornakiewicz on 26.05.2017.
  */
-
 public class OneDayPickerActivity extends AppCompatActivity {
 
     @Override

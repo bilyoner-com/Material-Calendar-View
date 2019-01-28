@@ -8,7 +8,6 @@ import android.view.View;
 /**
  * Created by Mateusz Kornakiewicz on 21.11.2017.
  */
-
 public class CalendarViewPager extends ViewPager {
 
     public CalendarViewPager(Context context) {
@@ -30,7 +29,7 @@ public class CalendarViewPager extends ViewPager {
 
             int h = child.getMeasuredHeight();
 
-            if (h > height){
+            if (h > height) {
                 height = h;
             }
         }

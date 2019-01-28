@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import com.applandeo.materialcalendarview.R;
 import com.applandeo.materialcalendarview.extensions.CalendarGridView;
 import com.applandeo.materialcalendarview.listeners.DayRowClickListener;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
-import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,7 +24,6 @@ import static com.applandeo.materialcalendarview.utils.CalendarProperties.CALEND
  * <p>
  * Created by Mateusz Kornakiewicz on 24.05.2017.
  */
-
 public class CalendarPageAdapter extends PagerAdapter {
 
     private Context mContext;

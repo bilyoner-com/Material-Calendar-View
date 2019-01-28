@@ -18,10 +18,11 @@ import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.extensions.CalendarViewPager;
 import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.applandeo.materialcalendarview.model.EventDay;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 import com.applandeo.materialcalendarview.utils.AppearanceUtils;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
 import com.applandeo.materialcalendarview.utils.DateUtils;
-import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -50,7 +51,6 @@ import static com.applandeo.materialcalendarview.utils.CalendarProperties.FIRST_
  * <p>
  * Created by Mateusz Kornakiewicz on 23.05.2017.
  */
-
 public class CalendarView extends LinearLayout {
 
     public static final int CLASSIC = 0;

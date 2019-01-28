@@ -12,7 +12,6 @@ import java.util.Calendar;
 /**
  * Created by Mateusz Kornakiewicz on 23.10.2017.
  */
-
 public class RangePickerActivity extends AppCompatActivity {
 
     @Override

@@ -14,8 +14,10 @@ import java.util.List;
 /**
  * Created by Mateusz Kornakiewicz on 04.01.2018.
  */
-
 public final class AppearanceUtils {
+
+    private AppearanceUtils() {
+    }
 
     public static void setAbbreviationsLabels(View view, int color, int firstDayOfWeek) {
         List<TextView> labels = new ArrayList<>();
@@ -71,9 +73,6 @@ public final class AppearanceUtils {
         view.findViewById(R.id.calendarViewPager).setBackgroundColor(color);
     }
 
-    private AppearanceUtils() {
-    }
-
     public static void setPreviousButtonImage(View view, Drawable drawable) {
         if (drawable == null) {
             return;
@@ -90,7 +89,7 @@ public final class AppearanceUtils {
         ((ImageButton) view.findViewById(R.id.forwardButton)).setImageDrawable(drawable);
     }
 
-    public static void setHeaderVisibility(View view, int visibility){
+    public static void setHeaderVisibility(View view, int visibility) {
         ConstraintLayout calendarHeader = (ConstraintLayout) view.findViewById(R.id.calendarHeader);
         calendarHeader.setVisibility(visibility);
     }
