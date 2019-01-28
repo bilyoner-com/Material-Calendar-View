@@ -1,8 +1,9 @@
 package com.applandeo.materialcalendarview.utils;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StyleRes;
 
 import com.annimon.stream.Stream;
 import com.applandeo.materialcalendarview.CalendarView;
@@ -34,14 +35,52 @@ public class CalendarProperties {
     public static final int CALENDAR_SIZE = 2401;
     public static final int FIRST_VISIBLE_PAGE = CALENDAR_SIZE / 2;
 
-    private int mCalendarType, mHeaderColor, mHeaderLabelColor, mSelectionColor, mTodayLabelColor,
-            mDialogButtonsColor, mItemLayoutResource, mDisabledDaysLabelsColor, mPagesColor,
-            mAbbreviationsBarColor, mAbbreviationsLabelsColor, mDaysLabelsColor, mSelectionLabelColor,
-            mAnotherMonthsDaysLabelsColor, mHeaderVisibility;
+    public static final int INVALID_RES_ID = 0;
+
+    private static final int DEFAULT_PAGES_COLOR = R.color.pageColor;
+
+    private static final int DEFAULT_DIALOG_BUTTON_TEXT_APPEARANCE = R.style.LabelTextStyle_DialogButton;
+
+    private static final int DEFAULT_HEADER_BACKGROUND_COLOR = R.color.headerColor;
+
+    private static final int DEFAULT_PREVIOUS_BUTTON_SRC = R.drawable.ic_arrow_left;
+    private static final int DEFAULT_FORWARD_BUTTON_SRC = R.drawable.ic_arrow_right;
+
+    private static final int DEFAULT_MONTH_NAMES = R.array.material_calendar_months_array;
+    private static final int DEFAULT_MONTH_NAME_TEXT_APPEARANCE = R.style.LabelTextStyle_MonthName;
+
+    private static final int DEFAULT_DAY_NAMES = R.array.material_calendar_day_abbreviations_array;
+    private static final int DEFAULT_DAY_NAMES_BAR_COLOR = R.color.abbreviationBarColor;
+    private static final int DEFAULT_DAY_NAME_TEXT_APPEARANCE = R.style.LabelTextStyle_DayAbbreviation;
+
+    private static final int DEFAULT_CURRENT_MONTH_DAY_BACKGROUND_SRC = R.drawable.day_item_background;
+    private static final int DEFAULT_CURRENT_MONTH_DAY_TEXT_APPEARANCE = R.style.LabelTextStyle_CurrentMonthDay;
+
+    private static final int DEFAULT_ANOTHER_MONTH_DAY_BACKGROUND_SRC = R.drawable.day_item_background;
+    private static final int DEFAULT_ANOTHER_MONTH_DAY_TEXT_APPEARANCE = R.style.LabelTextStyle_AnotherMonthDay;
+
+    private static final int DEFAULT_TODAY_BACKGROUND_SRC = R.drawable.day_item_background;
+    private static final int DEFAULT_TODAY_TEXT_APPEARANCE = R.style.LabelTextStyle_Today;
+
+    private static final int DEFAULT_SELECTED_DAY_BACKGROUND_SRC = R.drawable.background_color_circle_selector;
+    private static final int DEFAULT_SELECTED_DAY_TEXT_APPEARANCE = R.style.LabelTextStyle_SelectedDay;
+
+    private static final int DEFAULT_DISABLED_DAY_BACKGROUND_SRC = R.drawable.day_item_background;
+    private static final int DEFAULT_DISABLED_DAY_TEXT_APPEARANCE = R.style.LabelTextStyle_DisabledDay;
+
+    private int mCalendarType, mDayItemLayoutResource,
+            mPagesColor, mDialogButtonTextAppearance,
+            mHeaderVisibility, mHeaderBackgroundColor,
+            mPreviousButtonSrc, mForwardButtonSrc,
+            mMonthNames, mMonthNameTextAppearance,
+            mDayNames, mDayNamesBarColor, mDayNameTextAppearance,
+            mCurrentMonthDayBackgroundSrc, mCurrentMonthDayTextAppearance,
+            mAnotherMonthDayBackgroundSrc, mAnotherMonthDayTextAppearance,
+            mTodayDayBackgroundSrc, mTodayTextAppearance,
+            mSelectedDayBackgroundSrc, mSelectedDayTextAppearance,
+            mDisabledDayBackgroundSrc, mDisabledDayTextAppearance;
 
     private boolean mEventsEnabled;
-
-    private Drawable mPreviousButtonSrc, mForwardButtonSrc;
 
     private Calendar mFirstPageCalendarDate = DateUtils.getCalendar();
     private Calendar mCalendar, mMinimumDate, mMaximumDate;
@@ -56,28 +95,6 @@ public class CalendarProperties {
     private List<Calendar> mDisabledDays = new ArrayList<>();
     private List<SelectedDay> mSelectedDays = new ArrayList<>();
 
-    private Context mContext;
-
-    public CalendarProperties(Context context) {
-        mContext = context;
-    }
-
-    public int getCalendarType() {
-        return mCalendarType;
-    }
-
-    public void setCalendarType(int calendarType) {
-        mCalendarType = calendarType;
-    }
-
-    public boolean getEventsEnabled() {
-        return mEventsEnabled;
-    }
-
-    public void setEventsEnabled(boolean eventsEnabled) {
-        mEventsEnabled = eventsEnabled;
-    }
-
     public Calendar getCalendar() {
         return mCalendar;
     }
@@ -86,84 +103,8 @@ public class CalendarProperties {
         mCalendar = calendar;
     }
 
-    public OnSelectDateListener getOnSelectDateListener() {
-        return mOnSelectDateListener;
-    }
-
-    public void setOnSelectDateListener(OnSelectDateListener onSelectDateListener) {
-        mOnSelectDateListener = onSelectDateListener;
-    }
-
-    public int getHeaderColor() {
-        if (mHeaderColor <= 0) {
-            return mHeaderColor;
-        }
-
-        return ContextCompat.getColor(mContext, mHeaderColor);
-    }
-
-    public void setHeaderColor(int headerColor) {
-        mHeaderColor = headerColor;
-    }
-
-    public int getHeaderLabelColor() {
-        if (mHeaderLabelColor <= 0) {
-            return mHeaderLabelColor;
-        }
-
-        return ContextCompat.getColor(mContext, mHeaderLabelColor);
-    }
-
-    public void setHeaderLabelColor(int headerLabelColor) {
-        mHeaderLabelColor = headerLabelColor;
-    }
-
-    public Drawable getPreviousButtonSrc() {
-        return mPreviousButtonSrc;
-    }
-
-    public void setPreviousButtonSrc(Drawable previousButtonSrc) {
-        mPreviousButtonSrc = previousButtonSrc;
-    }
-
-    public Drawable getForwardButtonSrc() {
-        return mForwardButtonSrc;
-    }
-
-    public void setForwardButtonSrc(Drawable forwardButtonSrc) {
-        mForwardButtonSrc = forwardButtonSrc;
-    }
-
-    public int getSelectionColor() {
-        if (mSelectionColor == 0) {
-            return ContextCompat.getColor(mContext, R.color.defaultColor);
-        }
-
-        return mSelectionColor;
-    }
-
-    public void setSelectionColor(int selectionColor) {
-        mSelectionColor = selectionColor;
-    }
-
-    public int getTodayLabelColor() {
-        if (mTodayLabelColor == 0) {
-            return ContextCompat.getColor(mContext, R.color.defaultColor);
-        }
-
-        return mTodayLabelColor;
-    }
-
-    public void setTodayLabelColor(int todayLabelColor) {
-        mTodayLabelColor = todayLabelColor;
-    }
-
-    public int getDialogButtonsColor() {
-        return mDialogButtonsColor;
-    }
-
-    public void setDialogButtonsColor(int dialogButtonsColor) {
-        mDialogButtonsColor = dialogButtonsColor;
+    public Calendar getFirstPageCalendarDate() {
+        return mFirstPageCalendarDate;
     }
 
     public Calendar getMinimumDate() {
@@ -182,20 +123,28 @@ public class CalendarProperties {
         mMaximumDate = maximumDate;
     }
 
+    public OnDayClickListener getOnDayClickListener() {
+        return mOnDayClickListener;
+    }
+
+    public void setOnDayClickListener(OnDayClickListener onDayClickListener) {
+        mOnDayClickListener = onDayClickListener;
+    }
+
+    public OnSelectDateListener getOnSelectDateListener() {
+        return mOnSelectDateListener;
+    }
+
+    public void setOnSelectDateListener(OnSelectDateListener onSelectDateListener) {
+        mOnSelectDateListener = onSelectDateListener;
+    }
+
     public OnSelectionAbilityListener getOnSelectionAbilityListener() {
         return mOnSelectionAbilityListener;
     }
 
     public void setOnSelectionAbilityListener(OnSelectionAbilityListener onSelectionAbilityListener) {
         mOnSelectionAbilityListener = onSelectionAbilityListener;
-    }
-
-    public int getItemLayoutResource() {
-        return mItemLayoutResource;
-    }
-
-    public void setItemLayoutResource(int itemLayoutResource) {
-        mItemLayoutResource = itemLayoutResource;
     }
 
     public OnCalendarPageChangeListener getOnPreviousPageChangeListener() {
@@ -214,16 +163,12 @@ public class CalendarProperties {
         mOnForwardPageChangeListener = onForwardButtonClickListener;
     }
 
-    public Calendar getFirstPageCalendarDate() {
-        return mFirstPageCalendarDate;
+    public boolean getEventsEnabled() {
+        return mEventsEnabled;
     }
 
-    public OnDayClickListener getOnDayClickListener() {
-        return mOnDayClickListener;
-    }
-
-    public void setOnDayClickListener(OnDayClickListener onDayClickListener) {
-        mOnDayClickListener = onDayClickListener;
+    public void setEventsEnabled(boolean eventsEnabled) {
+        mEventsEnabled = eventsEnabled;
     }
 
     public List<EventDay> getEventDays() {
@@ -278,76 +223,44 @@ public class CalendarProperties {
                 .toList();
     }
 
-    public int getDisabledDaysLabelsColor() {
-        if (mDisabledDaysLabelsColor == 0) {
-            return ContextCompat.getColor(mContext, R.color.nextMonthDayColor);
-        }
-
-        return mDisabledDaysLabelsColor;
+    public int getCalendarType() {
+        return mCalendarType;
     }
 
-    public void setDisabledDaysLabelsColor(int disabledDaysLabelsColor) {
-        mDisabledDaysLabelsColor = disabledDaysLabelsColor;
+    public void setCalendarType(int calendarType) {
+        mCalendarType = calendarType;
+    }
+
+    public int getDayItemLayoutResource() {
+        return mDayItemLayoutResource;
+    }
+
+    public void setDayItemLayoutResource(int itemLayoutResource) {
+        mDayItemLayoutResource = itemLayoutResource;
     }
 
     public int getPagesColor() {
-        return mPagesColor;
+        if (mPagesColor != INVALID_RES_ID) {
+            return mPagesColor;
+        }
+
+        return DEFAULT_PAGES_COLOR;
     }
 
-    public void setPagesColor(int pagesColor) {
+    public void setPagesColor(@ColorRes int pagesColor) {
         mPagesColor = pagesColor;
     }
 
-    public int getAbbreviationsBarColor() {
-        return mAbbreviationsBarColor;
-    }
-
-    public void setAbbreviationsBarColor(int abbreviationsBarColor) {
-        mAbbreviationsBarColor = abbreviationsBarColor;
-    }
-
-    public int getAbbreviationsLabelsColor() {
-        return mAbbreviationsLabelsColor;
-    }
-
-    public void setAbbreviationsLabelsColor(int abbreviationsLabelsColor) {
-        mAbbreviationsLabelsColor = abbreviationsLabelsColor;
-    }
-
-    public int getDaysLabelsColor() {
-        if (mDaysLabelsColor == 0) {
-            return ContextCompat.getColor(mContext, R.color.currentMonthDayColor);
+    public int getDialogButtonTextAppearance() {
+        if (mDialogButtonTextAppearance != INVALID_RES_ID) {
+            return mDialogButtonTextAppearance;
         }
 
-        return mDaysLabelsColor;
+        return DEFAULT_DIALOG_BUTTON_TEXT_APPEARANCE;
     }
 
-    public void setDaysLabelsColor(int daysLabelsColor) {
-        mDaysLabelsColor = daysLabelsColor;
-    }
-
-    public int getSelectionLabelColor() {
-        if (mSelectionLabelColor == 0) {
-            return ContextCompat.getColor(mContext, android.R.color.white);
-        }
-
-        return mSelectionLabelColor;
-    }
-
-    public void setSelectionLabelColor(int selectionLabelColor) {
-        mSelectionLabelColor = selectionLabelColor;
-    }
-
-    public int getAnotherMonthsDaysLabelsColor() {
-        if (mAnotherMonthsDaysLabelsColor == 0) {
-            return ContextCompat.getColor(mContext, R.color.nextMonthDayColor);
-        }
-
-        return mAnotherMonthsDaysLabelsColor;
-    }
-
-    public void setAnotherMonthsDaysLabelsColor(int anotherMonthsDaysLabelsColor) {
-        mAnotherMonthsDaysLabelsColor = anotherMonthsDaysLabelsColor;
+    public void setDialogButtonTextAppearance(@StyleRes int dialogButtonsTextAppearance) {
+        mDialogButtonTextAppearance = dialogButtonsTextAppearance;
     }
 
     public int getHeaderVisibility() {
@@ -356,5 +269,221 @@ public class CalendarProperties {
 
     public void setHeaderVisibility(int headerVisibility) {
         mHeaderVisibility = headerVisibility;
+    }
+
+    public int getHeaderBackgroundColor() {
+        if (mHeaderBackgroundColor != INVALID_RES_ID) {
+            return mHeaderBackgroundColor;
+        }
+
+        return DEFAULT_HEADER_BACKGROUND_COLOR;
+    }
+
+    public void setHeaderBackgroundColor(@ColorRes int headerBackgroundColor) {
+        mHeaderBackgroundColor = headerBackgroundColor;
+    }
+
+    public int getPreviousButtonSrc() {
+        if (mPreviousButtonSrc != INVALID_RES_ID) {
+            return mPreviousButtonSrc;
+        }
+
+        return DEFAULT_PREVIOUS_BUTTON_SRC;
+    }
+
+    public void setPreviousButtonSrc(@DrawableRes int previousButtonSrc) {
+        mPreviousButtonSrc = previousButtonSrc;
+    }
+
+    public int getForwardButtonSrc() {
+        if (mForwardButtonSrc != INVALID_RES_ID) {
+            return mForwardButtonSrc;
+        }
+
+        return DEFAULT_FORWARD_BUTTON_SRC;
+    }
+
+    public void setForwardButtonSrc(@DrawableRes int forwardButtonSrc) {
+        mForwardButtonSrc = forwardButtonSrc;
+    }
+
+    public int getMonthNames() {
+        if (mMonthNames != INVALID_RES_ID) {
+            return mMonthNames;
+        }
+
+        return DEFAULT_MONTH_NAMES;
+    }
+
+    public void setMonthNames(@ArrayRes int monthNamesRes) {
+        this.mMonthNames = monthNamesRes;
+    }
+
+    public int getMonthNameTextAppearance() {
+        if (mMonthNameTextAppearance != INVALID_RES_ID) {
+            return mMonthNameTextAppearance;
+        }
+
+        return DEFAULT_MONTH_NAME_TEXT_APPEARANCE;
+    }
+
+    public void setMonthNameTextAppearance(@StyleRes int monthNameTextAppearance) {
+        this.mMonthNameTextAppearance = monthNameTextAppearance;
+    }
+
+    public int getDayNames() {
+        if (mDayNames != INVALID_RES_ID) {
+            return mDayNames;
+        }
+
+        return DEFAULT_DAY_NAMES;
+    }
+
+    public void setDayNames(@ArrayRes int dayNamesRes) {
+        this.mDayNames = dayNamesRes;
+    }
+
+    public int getDayNamesBarColor() {
+        if (mDayNamesBarColor != INVALID_RES_ID) {
+            return mDayNamesBarColor;
+        }
+
+        return DEFAULT_DAY_NAMES_BAR_COLOR;
+    }
+
+    public void setDayNamesBarColor(@ColorRes int dayNamesBarColor) {
+        this.mDayNamesBarColor = dayNamesBarColor;
+    }
+
+    public int getDayNameTextAppearance() {
+        if (mDayNameTextAppearance != INVALID_RES_ID) {
+            return mDayNameTextAppearance;
+        }
+
+        return DEFAULT_DAY_NAME_TEXT_APPEARANCE;
+    }
+
+    public void setDayNameTextAppearance(@StyleRes int dayNameTextAppearance) {
+        this.mDayNameTextAppearance = dayNameTextAppearance;
+    }
+
+    public int getCurrentMonthDayBackgroundSrc() {
+        if (mCurrentMonthDayBackgroundSrc != INVALID_RES_ID) {
+            return mCurrentMonthDayBackgroundSrc;
+        }
+
+        return DEFAULT_CURRENT_MONTH_DAY_BACKGROUND_SRC;
+    }
+
+    public void setCurrentMonthDayBackgroundSrc(@DrawableRes int mCurrentMonthDayBackgroundSrc) {
+        this.mCurrentMonthDayBackgroundSrc = mCurrentMonthDayBackgroundSrc;
+    }
+
+    public int getCurrentMonthDayTextAppearance() {
+        if (mCurrentMonthDayTextAppearance != INVALID_RES_ID) {
+            return mCurrentMonthDayTextAppearance;
+        }
+
+        return DEFAULT_CURRENT_MONTH_DAY_TEXT_APPEARANCE;
+    }
+
+    public void setCurrentMonthDayTextAppearance(@StyleRes int mCurrentMonthDayTextAppearance) {
+        this.mCurrentMonthDayTextAppearance = mCurrentMonthDayTextAppearance;
+    }
+
+    public int getAnotherMonthDayBackgroundSrc() {
+        if (mAnotherMonthDayBackgroundSrc != INVALID_RES_ID) {
+            return mAnotherMonthDayBackgroundSrc;
+        }
+
+        return DEFAULT_ANOTHER_MONTH_DAY_BACKGROUND_SRC;
+    }
+
+    public void setAnotherMonthDayBackgroundSrc(@DrawableRes int anotherMonthDayBackgroundSrc) {
+        this.mAnotherMonthDayBackgroundSrc = anotherMonthDayBackgroundSrc;
+    }
+
+    public int getAnotherMonthDayTextAppearance() {
+        if (mAnotherMonthDayTextAppearance != INVALID_RES_ID) {
+            return mAnotherMonthDayTextAppearance;
+        }
+
+        return DEFAULT_ANOTHER_MONTH_DAY_TEXT_APPEARANCE;
+    }
+
+    public void setAnotherMonthDayTextAppearance(@StyleRes int anotherMonthDayTextAppearance) {
+        this.mAnotherMonthDayTextAppearance = anotherMonthDayTextAppearance;
+    }
+
+    public int getTodayDayBackgroundSrc() {
+        if (mTodayDayBackgroundSrc != INVALID_RES_ID) {
+            return mTodayDayBackgroundSrc;
+        }
+
+        return DEFAULT_TODAY_BACKGROUND_SRC;
+    }
+
+    public void setTodayBackgroundSrc(@DrawableRes int todayDayBackgroundSrc) {
+        this.mTodayDayBackgroundSrc = todayDayBackgroundSrc;
+    }
+
+    public int getTodayTextAppearance() {
+        if (mTodayTextAppearance != INVALID_RES_ID) {
+            return mTodayTextAppearance;
+        }
+
+        return DEFAULT_TODAY_TEXT_APPEARANCE;
+    }
+
+    public void setTodayTextAppearance(@StyleRes int todayTextAppearance) {
+        this.mTodayTextAppearance = todayTextAppearance;
+    }
+
+    public int getSelectedDayBackgroundSrc() {
+        if (mSelectedDayBackgroundSrc != INVALID_RES_ID) {
+            return mSelectedDayBackgroundSrc;
+        }
+
+        return DEFAULT_SELECTED_DAY_BACKGROUND_SRC;
+    }
+
+    public void setSelectedDayBackgroundSrc(@DrawableRes int selectedDayBackgroundSrc) {
+        this.mSelectedDayBackgroundSrc = selectedDayBackgroundSrc;
+    }
+
+    public int getSelectedDayTextAppearance() {
+        if (mSelectedDayTextAppearance != INVALID_RES_ID) {
+            return mSelectedDayTextAppearance;
+        }
+
+        return DEFAULT_SELECTED_DAY_TEXT_APPEARANCE;
+    }
+
+    public void setSelectedDayTextAppearance(@StyleRes int selectedDayTextAppearance) {
+        this.mSelectedDayTextAppearance = selectedDayTextAppearance;
+    }
+
+    public int getDisabledDayBackgroundSrc() {
+        if (mDisabledDayBackgroundSrc != INVALID_RES_ID) {
+            return mDisabledDayBackgroundSrc;
+        }
+
+        return DEFAULT_DISABLED_DAY_BACKGROUND_SRC;
+    }
+
+    public void setDisabledDayBackgroundSrc(@DrawableRes int disabledDayBackgroundSrc) {
+        this.mDisabledDayBackgroundSrc = disabledDayBackgroundSrc;
+    }
+
+    public int getDisabledDayTextAppearance() {
+        if (mDisabledDayTextAppearance != INVALID_RES_ID) {
+            return mDisabledDayTextAppearance;
+        }
+
+        return DEFAULT_DISABLED_DAY_TEXT_APPEARANCE;
+    }
+
+    public void setDisabledDayTextAppearance(@StyleRes int disabledDayTextAppearance) {
+        this.mDisabledDayTextAppearance = disabledDayTextAppearance;
     }
 }

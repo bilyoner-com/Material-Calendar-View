@@ -1,7 +1,6 @@
 package com.applandeo.materialcalendarview;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
@@ -81,19 +80,15 @@ public class DatePicker {
     }
 
     private void setDialogButtonsColors() {
-        if (mCalendarProperties.getDialogButtonsColor() != 0) {
-            mCancelButton.setTextColor(ContextCompat.getColor(mContext, mCalendarProperties.getDialogButtonsColor()));
-            mTodayButton.setTextColor(ContextCompat.getColor(mContext, mCalendarProperties.getDialogButtonsColor()));
-        }
+        mCancelButton.setTextAppearance(mContext, mCalendarProperties.getDialogButtonTextAppearance());
+        mTodayButton.setTextAppearance(mContext, mCalendarProperties.getDialogButtonTextAppearance());
     }
 
     private void setOkButtonState(boolean enabled) {
         mOkButton.setEnabled(enabled);
 
-        if (mCalendarProperties.getDialogButtonsColor() != 0) {
-            mOkButton.setTextColor(ContextCompat.getColor(mContext, enabled
-                    ? mCalendarProperties.getDialogButtonsColor() : R.color.disabledDialogButtonColor));
-        }
+        mOkButton.setTextAppearance(mContext, enabled
+                ? mCalendarProperties.getDialogButtonTextAppearance() : R.style.LabelTextStyle_DialogButton_Disabled);
     }
 
     private void setTodayButtonVisibility() {

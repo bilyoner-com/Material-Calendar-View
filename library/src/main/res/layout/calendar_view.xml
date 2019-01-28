@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
@@ -11,7 +12,7 @@
         android:id="@+id/calendarHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/defaultColor">
+        android:background="@color/headerColor">
 
         <ImageButton
             android:id="@+id/previousButton"
@@ -38,12 +39,11 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textAppearance="@style/LabelTextStyle.MonthName"
             app:layout_constraintLeft_toRightOf="@id/previousButton"
             app:layout_constraintRight_toLeftOf="@id/forwardButton"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="March 2019" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -52,6 +52,7 @@
         android:id="@+id/abbreviationsBar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="@android:color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -62,7 +63,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_monday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/tuesdayLabel"
@@ -71,7 +72,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_tuesday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/wednesdayLabel"
@@ -80,7 +81,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_wednesday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/thursdayLabel"
@@ -89,7 +90,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_thursday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/fridayLabel"
@@ -98,7 +99,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_friday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/saturdayLabel"
@@ -107,7 +108,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_saturday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
 
         <TextView
             android:id="@+id/sundayLabel"
@@ -116,7 +117,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="@string/material_calendar_sunday"
-            android:textColor="@color/daysLabelColor" />
+            android:textAppearance="@style/LabelTextStyle.DayAbbreviation" />
     </LinearLayout>
 
     <ScrollView

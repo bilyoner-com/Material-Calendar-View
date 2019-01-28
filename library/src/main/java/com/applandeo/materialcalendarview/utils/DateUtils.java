@@ -1,11 +1,12 @@
 package com.applandeo.materialcalendarview.utils;
 
 import android.content.Context;
+import android.support.annotation.ArrayRes;
 
 import com.annimon.stream.Stream;
-import com.applandeo.materialcalendarview.R;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -86,17 +87,39 @@ public class DateUtils {
     }
 
     /**
+     * This method returns true if given date is equals to today, otherwise false
+     *
+     * @param day A day object to compare
+     * @return Boolean value if given date is equals to today
+     */
+    public static boolean isToday(Calendar day) {
+        return isDateEquals(getCalendar(), day);
+    }
+
+    /**
+     * This method returns true if the dates of given calendars are equal, otherwise false
+     *
+     * @param firstCalendar  First calendar object to compare
+     * @param secondCalendar Second calendar object to compare
+     * @return Boolean value if the dates of given calendars are equal
+     */
+    public static boolean isDateEquals(Calendar firstCalendar, Calendar secondCalendar) {
+        return firstCalendar.getTime().equals(secondCalendar.getTime());
+    }
+
+    /**
      * This method returns a string containing a month's name and a year (in number).
      * It's used instead of new SimpleDateFormat("MMMM yyyy", Locale.getDefault()).format([Date]);
      * because that method returns a month's name in incorrect form in some languages (i.e. in Polish)
      *
-     * @param context  An array of months names
-     * @param calendar A Calendar object containing date which will be formatted
+     * @param context     The context
+     * @param calendar    A Calendar object containing date which will be formatted
+     * @param monthLabels An array of months names
      * @return A string of the formatted date containing a month's name and a year (in number)
      */
-    public static String getMonthAndYearDate(Context context, Calendar calendar) {
+    public static String getMonthAndYearDate(Context context, Calendar calendar, @ArrayRes int monthLabels) {
         return String.format("%s  %s",
-                context.getResources().getStringArray(R.array.material_calendar_months_array)[calendar.get(Calendar.MONTH)],
+                context.getResources().getStringArray(monthLabels)[calendar.get(Calendar.MONTH)],
                 calendar.get(Calendar.YEAR));
     }
 

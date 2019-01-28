@@ -18,8 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.applandeo.materialcalendarview.utils.CalendarProperties.CALENDAR_SIZE;
-
 /**
  * This class is responsible for loading a calendar page content.
  * <p>
@@ -42,12 +40,12 @@ public class CalendarPageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return CALENDAR_SIZE;
+        return CalendarProperties.CALENDAR_SIZE;
     }
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        return POSITION_NONE;
+        return PagerAdapter.POSITION_NONE;
     }
 
     @Override
@@ -58,19 +56,21 @@ public class CalendarPageAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mCalendarGridView = (CalendarGridView) inflater.inflate(R.layout.calendar_view_grid, null);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        mCalendarGridView = (CalendarGridView) inflater
+                .inflate(R.layout.calendar_view_grid, container, false);
 
         loadMonth(position);
 
-        mCalendarGridView.setOnItemClickListener(new DayRowClickListener(this,
-                mCalendarProperties, mPageMonth));
+        mCalendarGridView.setOnItemClickListener(
+                new DayRowClickListener(this, mCalendarProperties, mPageMonth));
 
         container.addView(mCalendarGridView);
+
         return mCalendarGridView;
     }
 
-    public void addSelectedDay(SelectedDay selectedDay) {
+    public void addOrRemoveSelectedDay(SelectedDay selectedDay) {
         if (!mCalendarProperties.getSelectedDays().contains(selectedDay)) {
             mCalendarProperties.getSelectedDays().add(selectedDay);
             informDatePicker();
@@ -85,8 +85,8 @@ public class CalendarPageAdapter extends PagerAdapter {
         return mCalendarProperties.getSelectedDays();
     }
 
-    public SelectedDay getSelectedDay() {
-        return mCalendarProperties.getSelectedDays().get(0);
+    public SelectedDay getSelectedDay(int position) {
+        return mCalendarProperties.getSelectedDays().get(position);
     }
 
     public void setSelectedDay(SelectedDay selectedDay) {
@@ -99,7 +99,8 @@ public class CalendarPageAdapter extends PagerAdapter {
      */
     private void informDatePicker() {
         if (mCalendarProperties.getOnSelectionAbilityListener() != null) {
-            mCalendarProperties.getOnSelectionAbilityListener().onChange(mCalendarProperties.getSelectedDays().size() > 0);
+            mCalendarProperties.getOnSelectionAbilityListener()
+                    .onChange(mCalendarProperties.getSelectedDays().size() > 0);
         }
     }
 
@@ -140,7 +141,7 @@ public class CalendarPageAdapter extends PagerAdapter {
         }
 
         mPageMonth = calendar.get(Calendar.MONTH) - 1;
-        CalendarDayAdapter calendarDayAdapter = new CalendarDayAdapter(this, mContext,
+        CalendarDayAdapter calendarDayAdapter = new CalendarDayAdapter(mContext, this,
                 mCalendarProperties, days, mPageMonth);
 
         mCalendarGridView.setAdapter(calendarDayAdapter);

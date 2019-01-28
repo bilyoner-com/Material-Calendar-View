@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="pageColor">@android:color/white</color>
+
+    <color name="headerColor">#2962FF</color>
+    <color name="abbreviationBarColor">#2962FF</color>
+
     <color name="daysLabelColor">#8A000000</color>
     <color name="currentMonthDayColor">#de000000</color>
-    <color name="nextMonthDayColor">#1F000000</color>
+    <color name="anotherMonthDayColor">#66262626</color>
+    <color name="disabledDayColor">#1F000000</color>
     <color name="disabledDialogButtonColor">#1F000000</color>
 
     <color name="itemHighlightColor">#1F000000</color>
-
-    <color name="defaultColor">#2962FF</color>
 </resources>

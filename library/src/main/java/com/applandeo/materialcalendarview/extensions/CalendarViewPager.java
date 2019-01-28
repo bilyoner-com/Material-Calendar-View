@@ -27,10 +27,10 @@ public class CalendarViewPager extends ViewPager {
             View child = getChildAt(i);
             child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
 
-            int h = child.getMeasuredHeight();
+            int measuredHeight = child.getMeasuredHeight();
 
-            if (h > height) {
-                height = h;
+            if (measuredHeight > height) {
+                height = measuredHeight;
             }
         }
 
