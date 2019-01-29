@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Material Calendar View</string>
 
@@ -10,21 +11,32 @@
     <string name="material_calendar_sunday">Nd</string>
 
     <array name="material_calendar_months_array">
-        <item>Styczeń</item>
-        <item>Luty</item>
-        <item>Marzec</item>
-        <item>Kwiecień</item>
-        <item>Maj</item>
-        <item>Czerwiec</item>
-        <item>Lipiec</item>
-        <item>Sierpień</item>
-        <item>Wrzesień</item>
-        <item>Październik</item>
-        <item>Listopad</item>
-        <item>Grudzień</item>
+        <item>Ocak</item>
+        <item>Şubat</item>
+        <item>Mart</item>
+        <item>Nisan</item>
+        <item>Mayıs</item>
+        <item>Haziran</item>
+        <item>Temmuz</item>
+        <item>Ağustos</item>
+        <item>Eylül</item>
+        <item>Ekim</item>
+        <item>Kasım</item>
+        <item>Aralık</item>
     </array>
 
     <string name="material_calendar_today_button">Dzisiaj</string>
     <string name="material_calendar_positive_button">Wybierz</string>
     <string name="material_calendar_negative_button">Anuluj</string>
+
+    <array name="material_calendar_day_abbreviations_array">
+        <item>PZT</item>
+        <item>SA</item>
+        <item>ÇAR</item>
+        <item>PER</item>
+        <item>CU</item>
+        <item>CTS</item>
+        <item>PAZ</item>
+    </array>
+
 </resources>

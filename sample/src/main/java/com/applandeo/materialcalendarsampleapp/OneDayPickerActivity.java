@@ -12,7 +12,6 @@ import java.util.Calendar;
 /**
  * Created by Mateusz Kornakiewicz on 26.05.2017.
  */
-
 public class OneDayPickerActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +19,7 @@ public class OneDayPickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_day_picker_activity);
 
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
 
         Calendar min = Calendar.getInstance();
         min.add(Calendar.DAY_OF_MONTH, -2);
@@ -37,7 +36,7 @@ public class OneDayPickerActivity extends AppCompatActivity {
                                 + eventDay.isEnabled(),
                         Toast.LENGTH_SHORT).show());
 
-        Button getDateButton = (Button) findViewById(R.id.getDateButton);
+        Button getDateButton = findViewById(R.id.getDateButton);
         getDateButton.setOnClickListener(v -> {
             for (Calendar calendar : calendarView.getSelectedDates()) {
                 System.out.println(calendar.getTime().toString());

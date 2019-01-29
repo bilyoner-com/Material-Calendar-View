@@ -1,4 +1,4 @@
-package com.applandeo.materialcalendarview;
+package com.applandeo.materialcalendarview.model;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
@@ -15,8 +15,8 @@ import java.util.Calendar;
  * <p>
  * Created by Mateusz Kornakiewicz on 23.05.2017.
  */
-
 public class EventDay {
+
     private Calendar mDay;
     private Object mDrawable;
     private boolean mIsDisabled;
@@ -48,7 +48,6 @@ public class EventDay {
         mDrawable = drawable;
     }
 
-
     /**
      * @return An image resource which will be displayed in the day row
      */
@@ -57,14 +56,12 @@ public class EventDay {
         return mDrawable;
     }
 
-
     /**
      * @return Calendar object which represents a date of current event
      */
     public Calendar getCalendar() {
         return mDay;
     }
-
 
     /**
      * @return Boolean value if day is not disabled

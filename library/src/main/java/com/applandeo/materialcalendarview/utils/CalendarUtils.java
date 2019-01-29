@@ -1,4 +1,4 @@
-package com.applandeo.materialcalendarview;
+package com.applandeo.materialcalendarview.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,11 +19,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Mateusz Kornakiewicz on 03.08.2018.
  */
-
 public final class CalendarUtils {
 
-    /*
-    Utils method to create drawable containing text
+    private CalendarUtils() {
+    }
+
+    /**
+     * Utils method to create drawable containing text
      */
     public static Drawable getDrawableText(Context context, String text, Typeface typeface, int color, int size) {
         Resources resources = context.getResources();
@@ -50,8 +52,9 @@ public final class CalendarUtils {
 
     /**
      * This method returns a list of calendar objects between two dates
+     *
      * @param firstDay Calendar representing a first selected date
-     * @param lastDay Calendar representing a last selected date
+     * @param lastDay  Calendar representing a last selected date
      * @return List of selected dates between two dates
      */
     public static ArrayList<Calendar> getDatesRange(Calendar firstDay, Calendar lastDay) {
@@ -81,8 +84,5 @@ public final class CalendarUtils {
         }
 
         return calendars;
-    }
-
-    private CalendarUtils() {
     }
 }

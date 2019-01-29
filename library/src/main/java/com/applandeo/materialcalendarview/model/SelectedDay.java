@@ -1,4 +1,4 @@
-package com.applandeo.materialcalendarview.utils;
+package com.applandeo.materialcalendarview.model;
 
 import android.view.View;
 
@@ -10,8 +10,8 @@ import java.util.Calendar;
  * <p>
  * Created by Mateusz Kornakiewicz on 23.05.2017.
  */
-
 public class SelectedDay {
+
     private View mView;
     private Calendar mCalendar;
 
@@ -52,7 +52,7 @@ public class SelectedDay {
             return getCalendar().equals(((SelectedDay) obj).getCalendar());
         }
 
-        if(obj instanceof Calendar){
+        if (obj instanceof Calendar) {
             return getCalendar().equals(obj);
         }
 

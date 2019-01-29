@@ -1,6 +1,7 @@
 package com.applandeo.materialcalendarview.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +10,19 @@ import android.view.ViewGroup;
 import com.applandeo.materialcalendarview.R;
 import com.applandeo.materialcalendarview.extensions.CalendarGridView;
 import com.applandeo.materialcalendarview.listeners.DayRowClickListener;
+import com.applandeo.materialcalendarview.model.SelectedDay;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
-import com.applandeo.materialcalendarview.utils.SelectedDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.applandeo.materialcalendarview.utils.CalendarProperties.CALENDAR_SIZE;
-
 /**
  * This class is responsible for loading a calendar page content.
  * <p>
  * Created by Mateusz Kornakiewicz on 24.05.2017.
  */
-
 public class CalendarPageAdapter extends PagerAdapter {
 
     private Context mContext;
@@ -42,34 +40,37 @@ public class CalendarPageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return CALENDAR_SIZE;
+        return CalendarProperties.CALENDAR_SIZE;
     }
 
     @Override
-    public int getItemPosition(Object object) {
-        return POSITION_NONE;
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mCalendarGridView = (CalendarGridView) inflater.inflate(R.layout.calendar_view_grid, null);
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        mCalendarGridView = (CalendarGridView) inflater
+                .inflate(R.layout.calendar_view_grid, container, false);
 
         loadMonth(position);
 
-        mCalendarGridView.setOnItemClickListener(new DayRowClickListener(this,
-                mCalendarProperties, mPageMonth));
+        mCalendarGridView.setOnItemClickListener(
+                new DayRowClickListener(this, mCalendarProperties, mPageMonth));
 
         container.addView(mCalendarGridView);
+
         return mCalendarGridView;
     }
 
-    public void addSelectedDay(SelectedDay selectedDay) {
+    public void addOrRemoveSelectedDay(SelectedDay selectedDay) {
         if (!mCalendarProperties.getSelectedDays().contains(selectedDay)) {
             mCalendarProperties.getSelectedDays().add(selectedDay);
             informDatePicker();
@@ -84,8 +85,8 @@ public class CalendarPageAdapter extends PagerAdapter {
         return mCalendarProperties.getSelectedDays();
     }
 
-    public SelectedDay getSelectedDay() {
-        return mCalendarProperties.getSelectedDays().get(0);
+    public SelectedDay getSelectedDay(int position) {
+        return mCalendarProperties.getSelectedDays().get(position);
     }
 
     public void setSelectedDay(SelectedDay selectedDay) {
@@ -98,7 +99,8 @@ public class CalendarPageAdapter extends PagerAdapter {
      */
     private void informDatePicker() {
         if (mCalendarProperties.getOnSelectionAbilityListener() != null) {
-            mCalendarProperties.getOnSelectionAbilityListener().onChange(mCalendarProperties.getSelectedDays().size() > 0);
+            mCalendarProperties.getOnSelectionAbilityListener()
+                    .onChange(mCalendarProperties.getSelectedDays().size() > 0);
         }
     }
 
@@ -139,14 +141,14 @@ public class CalendarPageAdapter extends PagerAdapter {
         }
 
         mPageMonth = calendar.get(Calendar.MONTH) - 1;
-        CalendarDayAdapter calendarDayAdapter = new CalendarDayAdapter(this, mContext,
+        CalendarDayAdapter calendarDayAdapter = new CalendarDayAdapter(mContext, this,
                 mCalendarProperties, days, mPageMonth);
 
         mCalendarGridView.setAdapter(calendarDayAdapter);
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View) object);
     }
 }

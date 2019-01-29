@@ -1,7 +1,6 @@
 package com.applandeo.materialcalendarview;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
@@ -18,8 +17,8 @@ import com.applandeo.materialcalendarview.utils.DateUtils;
  * <p>
  * Created by Mateusz Kornakiewicz on 27.07.2017.
  */
-
 public class DatePicker {
+
     private final Context mContext;
     private CalendarProperties mCalendarProperties;
 
@@ -36,13 +35,13 @@ public class DatePicker {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         final View view = layoutInflater.inflate(R.layout.date_picker_dialog, null);
 
-        if(mCalendarProperties.getPagesColor() != 0){
+        if (mCalendarProperties.getPagesColor() != 0) {
             view.setBackgroundColor(mCalendarProperties.getPagesColor());
         }
 
-        mCancelButton = (AppCompatButton) view.findViewById(R.id.negative_button);
-        mOkButton = (AppCompatButton) view.findViewById(R.id.positive_button);
-        mTodayButton = (AppCompatButton) view.findViewById(R.id.today_button);
+        mCancelButton = view.findViewById(R.id.negative_button);
+        mOkButton = view.findViewById(R.id.positive_button);
+        mTodayButton = view.findViewById(R.id.today_button);
 
         setTodayButtonVisibility();
         setDialogButtonsColors();
@@ -51,7 +50,7 @@ public class DatePicker {
 
         CalendarView calendarView = new CalendarView(mContext, mCalendarProperties);
 
-        FrameLayout calendarContainer = (FrameLayout) view.findViewById(R.id.calendarContainer);
+        FrameLayout calendarContainer = view.findViewById(R.id.calendarContainer);
         calendarContainer.addView(calendarView);
 
         Optional.ofNullable(mCalendarProperties.getCalendar()).ifPresent(calendar -> {
@@ -81,19 +80,15 @@ public class DatePicker {
     }
 
     private void setDialogButtonsColors() {
-        if (mCalendarProperties.getDialogButtonsColor() != 0) {
-            mCancelButton.setTextColor(ContextCompat.getColor(mContext, mCalendarProperties.getDialogButtonsColor()));
-            mTodayButton.setTextColor(ContextCompat.getColor(mContext, mCalendarProperties.getDialogButtonsColor()));
-        }
+        mCancelButton.setTextAppearance(mContext, mCalendarProperties.getDialogButtonTextAppearance());
+        mTodayButton.setTextAppearance(mContext, mCalendarProperties.getDialogButtonTextAppearance());
     }
 
     private void setOkButtonState(boolean enabled) {
         mOkButton.setEnabled(enabled);
 
-        if (mCalendarProperties.getDialogButtonsColor() != 0) {
-            mOkButton.setTextColor(ContextCompat.getColor(mContext, enabled
-                    ? mCalendarProperties.getDialogButtonsColor() : R.color.disabledDialogButtonColor));
-        }
+        mOkButton.setTextAppearance(mContext, enabled
+                ? mCalendarProperties.getDialogButtonTextAppearance() : R.style.LabelTextStyle_DialogButton_Disabled);
     }
 
     private void setTodayButtonVisibility() {

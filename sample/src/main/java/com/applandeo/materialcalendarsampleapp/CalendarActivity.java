@@ -7,8 +7,8 @@ import android.widget.Toast;
 
 import com.applandeo.materialcalendarsampleapp.utils.DrawableUtils;
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
+import com.applandeo.materialcalendarview.model.EventDay;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ import java.util.Random;
 /**
  * Created by Mateusz Kornakiewicz on 26.05.2017.
  */
-
 public class CalendarActivity extends AppCompatActivity {
 
     @Override
@@ -48,7 +47,7 @@ public class CalendarActivity extends AppCompatActivity {
         calendar4.add(Calendar.DAY_OF_MONTH, 13);
         events.add(new EventDay(calendar4, DrawableUtils.getThreeDots(this)));
 
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
 
         Calendar min = Calendar.getInstance();
         min.add(Calendar.MONTH, -2);
@@ -69,7 +68,7 @@ public class CalendarActivity extends AppCompatActivity {
                                 + eventDay.isEnabled(),
                         Toast.LENGTH_SHORT).show());
 
-        Button setDateButton = (Button) findViewById(R.id.setDateButton);
+        Button setDateButton = findViewById(R.id.setDateButton);
         setDateButton.setOnClickListener(v -> {
             try {
                 Calendar randomCalendar = getRandomCalendar();

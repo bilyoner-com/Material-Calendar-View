@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.model.EventDay;
 import com.applandeo.materialcalendarview.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * Created by Mateusz Kornakiewicz on 23.10.2017.
  */
-
 public class ManyDaysPickerActivity extends AppCompatActivity {
 
     @Override
@@ -24,7 +23,7 @@ public class ManyDaysPickerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.many_days_picker_activity);
 
-        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
 
         calendarView.setOnForwardPageChangeListener(() ->
                 Toast.makeText(getApplicationContext(), "Forward", Toast.LENGTH_SHORT).show());
@@ -42,7 +41,7 @@ public class ManyDaysPickerActivity extends AppCompatActivity {
 
         calendarView.setEvents(events);
 
-        Button getDateButton = (Button) findViewById(R.id.getDateButton);
+        Button getDateButton = findViewById(R.id.getDateButton);
         getDateButton.setOnClickListener(v -> {
             for (Calendar calendar : calendarView.getSelectedDates()) {
                 System.out.println(calendar.getTime().toString());
