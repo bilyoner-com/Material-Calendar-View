@@ -466,4 +466,16 @@ public class CalendarView extends LinearLayout {
     public void setDisabledDays(List<Calendar> disabledDays) {
         mCalendarProperties.setDisabledDays(disabledDays);
     }
+
+    /**
+     * Sets what the first day of the week is; e.g,
+     * {@link Calendar#SUNDAY} in the U.S.,
+     * {@link Calendar#MONDAY} in France.
+     *
+     * @param day the given first day of the week.
+     */
+    public void setFirstDayOfWeek(int day) {
+        mCalendarProperties.setFirstDayOfWeek(day);
+        initAttributes();
+    }
 }

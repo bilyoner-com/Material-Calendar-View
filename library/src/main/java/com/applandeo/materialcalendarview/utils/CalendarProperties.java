@@ -107,6 +107,10 @@ public class CalendarProperties {
         return mFirstPageCalendarDate;
     }
 
+    public void setFirstDayOfWeek(int day) {
+        this.mFirstPageCalendarDate.setFirstDayOfWeek(day);
+    }
+
     public Calendar getMinimumDate() {
         return mMinimumDate;
     }
