@@ -43,9 +43,6 @@ To your **XML layout** file add:
     android:layout_height="match_parent" />
 ```
 
-#### Apps using Material-Calendar-View:
-* [FreQuest](https://play.google.com/store/apps/details?id=com.applandeo.frequest)
-
 ## License
 ```
 Copyright 2017, Applandeo sp. z o.o.
